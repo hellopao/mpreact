@@ -1,0 +1,31 @@
+{
+    "name": "mpreact",
+    "version": "0.0.1",
+    "description": "react like framework for mini program",
+    "main": "lib/index.js",
+    "files": [
+      "./lib/index.js",
+      "./types/**/*",
+      "./index.d.ts",
+      "./rollup.config.js"
+    ],
+    "scripts": {
+      "build": "node node_modules/rollup/bin/rollup -c"
+    },
+    "keywords": [
+      "jsx",
+      "typescript",
+      "mini-program"
+    ],
+    "author": "qinjia@outlook.com",
+    "license": "ISC",
+    "devDependencies": {
+      "rollup": "^0.56.5",
+      "rollup-plugin-typescript": "^0.8.1",
+      "typescript": "^2.7.2"
+    },
+    "dependencies": {
+      "@types/glob": "^5.0.35",
+      "glob": "^7.1.2"
+    }
+  }
