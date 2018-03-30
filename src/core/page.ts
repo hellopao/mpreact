@@ -8,7 +8,7 @@ interface Page<S> {
  */
 export abstract class WxPage<P, S> {
 
-    state: Partial<S> = {};
+    state: Partial<S>;
     query: P;
 
     constructor(private page: Page<S>, options: P) {
@@ -29,7 +29,7 @@ export abstract class WxPage<P, S> {
 
     abstract template: JSX.Element;
 
-    abstract mounted(): void;
+    mounted?(): void;
 
     setState(state: Partial<S>, cb?: Function) {
         this.state = Object.assign({}, this.state, state);
