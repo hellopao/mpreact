@@ -26,12 +26,10 @@ declare namespace mp {
         onError?(): void;
     }
 
-    interface WxApp extends AppLifeCycle {
-
-    }
+    interface WxApp extends AppLifeCycle { }
 
     class WxApp {
-
+        mounted?(): void;
     }
 
     /********** Page **********/
@@ -87,7 +85,7 @@ declare namespace mp {
 
     class WxPage<P, S> {
 
-        state: Readonly<S>;
+        state: Readonly<Partial<S>>;
         query: P;
 
         constructor(page: Page<S>, options: P);
@@ -193,7 +191,7 @@ declare namespace mp {
         /**
          * 组件状态
          */
-        state: Readonly<S>;
+        state: Readonly<Partial<S>>;
 
         template: JSX.Element;
 
@@ -244,8 +242,12 @@ declare global {
 export default wx;
 
 export declare class WxApp extends mp.WxApp { }
-export declare class WxPage<P, S> extends mp.WxPage<P, S> { }
-export declare class WxComponent<P, S> extends mp.WxComponent<P, S>{ }
+export declare abstract class WxPage<P, S> extends mp.WxPage<P, S> { 
+    abstract template: JSX.Element;
+}
+export declare abstract class WxComponent<P, S> extends mp.WxComponent<P, S>{
+    abstract template: JSX.Element;
+}
 export function AppConfig<T extends { new(...args: any[]): any }>(config: {
     /**
      * 设置页面路径
