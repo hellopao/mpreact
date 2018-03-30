@@ -59,6 +59,8 @@ export abstract class WxComponent<P, S>{
 
     abstract template: JSX.Element;
 
+    mounted?(): void;
+    
     constructor(public component: Component<S>) {
         this.props = Object.assign({}, this.component.properties);
         [
