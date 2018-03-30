@@ -10,6 +10,7 @@
       "./rollup.config.js"
     ],
     "scripts": {
+        "postinstall": "node node_modules/rollup/bin/rollup -c",
       "build": "node node_modules/rollup/bin/rollup -c"
     },
     "keywords": [
