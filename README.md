@@ -186,24 +186,24 @@ class Tabs extends WxComponent<{tabs: Array<string>}, {selectedTab: string}> {
  
  ### wx
 
- promisified wx; 
+  promisified wx; 
 
  ### page
 
- . state: Object;
+ * state: Object;
 
- . query: Object; 页面参数
+ * query: Object; 页面参数;
 
- . setState(state: Partial<S>, cb?: Function): Promise<void>
+ * setState(state: Partial\<S>, cb?: Function): Promise<void>
 
- . navigateTo(page: string, query?: { [key: string]: number | string | boolean }): Promise<void>;
+ * navigateTo(page: string, query?: { [key: string]: number | string | boolean }): Promise<void>;
 
- . setTitle(title: string): Promise<void>;
+ * setTitle(title: string): Promise<void>;
 
  ### component
 
- . props: Object;
+ * props: Object;
 
- . state: Object;
+ * state: Object;
 
- . setState(state: Partial<S>): Promise<void>;
+ * setState(state: Partial\<S>): Promise<void>;
