@@ -64,7 +64,7 @@ import wx, {WxComponent} from "mpreact";
 
 import "../styles/tabs.scss";
 
-class Tabs extends WxComponent {
+export default class Tabs extends WxComponent {
 
     static propTypes = {
         tabs: Array
@@ -156,7 +156,7 @@ import wx, {WxComponent} from "mpreact";
 
 import "../styles/tabs.scss";
 
-class Tabs extends WxComponent<{tabs: Array<string>}, {selectedTab: string}> {
+export default class Tabs extends WxComponent<{tabs: Array<string>}, {selectedTab: string}> {
 
     /** content of page.wxml, jsx syntax */
     template = (
