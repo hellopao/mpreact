@@ -1,6 +1,6 @@
 {
     "name": "mpreact",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "react like framework for mini program",
     "main": "lib/index.js",
     "files": [
@@ -28,5 +28,6 @@
     "dependencies": {
       "@types/glob": "^5.0.35",
       "glob": "^7.1.2"
-    }
+    },
+    "types": "./index.d.ts"
   }
