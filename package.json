@@ -4,13 +4,11 @@
     "description": "react like framework for mini program",
     "main": "lib/index.js",
     "files": [
-      "./lib/index.js",
-      "./types/**/*",
-      "./index.d.ts",
-      "./rollup.config.js"
+      "lib/index.js",
+      "types/**/*",
+      "index.d.ts"
     ],
     "scripts": {
-        "postinstall": "node node_modules/rollup/bin/rollup -c",
       "build": "node node_modules/rollup/bin/rollup -c"
     },
     "keywords": [
