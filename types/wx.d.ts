@@ -1807,13 +1807,13 @@ declare namespace wx {
 
     /*--------------------------------------实时音频--------------------------------------------*/
 
-    export interface LiverPlayerCallback {
-        success?: () => void,
-        fail?: () => void,
-        complete?: () => void
+    export interface CommonWxCallback {
+        success?: (...res) => void,
+        fail?: (...res) => void,
+        complete?: (...res) => void
     }
 
-    export interface PlayerFullScreenCallback extends LiverPlayerCallback {
+    export interface PlayerFullScreenCallback extends CommonWxCallback {
         /**
          * 有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）
          */
@@ -1824,26 +1824,90 @@ declare namespace wx {
      * https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html
      * 操作对应的 <live-player/> 组件。 创建并返回 live-player 上下文 LivePlayerContext 对象。
      * 在自定义组件下，第二个参数传入组件实例this，以操作组件内 <live-player/> 组件
-     * @param {string} domId
-     * @param {WxmlElement} _this 组件实例
+     * @param {string} domId 
+     * @param {WxmlElement} _this 入组件实例
      * @returns {LivePlayerContext}
      */
     function createLivePlayerContext(domId: string, _this?: WxmlElement): {
-        play: (p: LiverPlayerCallback) => void
-        stop: (p: LiverPlayerCallback) => void
-        mute: (p: LiverPlayerCallback) => void
-        pause: (p: LiverPlayerCallback) => void
-        resume: (p: LiverPlayerCallback) => void
-        requestFullScreen: (p: PlayerFullScreenCallback) => void
-        exitFullScreen: (p: LiverPlayerCallback) => void
+        /**
+         * 播放
+         * @param {wx.CommonWxCallback} callback
+         */
+        play: (callback: CommonWxCallback) => void
+        /**
+         * 停止
+         * @param {wx.CommonWxCallback} callback
+         */
+        stop: (callback: CommonWxCallback) => void
+        /**
+         * 静音
+         * @param {wx.CommonWxCallback} callback
+         */
+        mute: (callback: CommonWxCallback) => void
+        /**
+         * 暂停
+         * @param {wx.CommonWxCallback} callback
+         */
+        pause: (callback: CommonWxCallback) => void
+        /**
+         * 恢复
+         * @param {wx.CommonWxCallback} callback
+         */
+        resume: (callback: CommonWxCallback) => void
+        /**
+         * 全屏
+         * @param {wx.CommonWxCallback} callback
+         */
+        requestFullScreen: (callback: PlayerFullScreenCallback) => void
+
+        /**
+         * 退出全屏
+         * @param {wx.CommonWxCallback} callback
+         */
+        exitFullScreen: (callback: CommonWxCallback) => void
     };
 
     /**
-     * https://developers.weixin.qq.com/mi
-     * @returns {LivePlayerContext}niprogram/dev/api/api-live-pusher.html
-     * @param {WXML.WxmlElement} _this
+     * 文档地址：https://developers.weixin.qq.com/mi
+     * 创建并返回 live-pusher 上下文 LivePusherContext 对象，LivePusherContext 与页面的 <live-pusher /> 组件绑定，
+     * 一个页面只能有一个live-pusher，通过它可以操作对应的 <live-pusher/> 组件。
+     * 在自定义组件下，第一个参数传入组件实例this，以操作组件内 <live-pusher/> 组件
+     * @param {WXML.WxmlElement} _this 自定义组件实例
+     * @returns {LivePusherContext}
      */
-    function createLivePusherContext(_this: WxmlElement):{
+    function createLivePusherContext(_this: WxmlElement): {
+        /**
+         * 开始推流
+         */
+        start: (callback: CommonWxCallback) => void,
 
+        /**
+         * 停止推流
+         */
+        stop: (callback: CommonWxCallback) => void,
+        /**
+         * 暂停推流
+         * @param {wx.CommonWxCallback} callback
+         */
+        pause: (callback: CommonWxCallback) => void,
+
+        /**
+         * 恢复推流
+         * @param {wx.CommonWxCallback} callback
+         */
+        resume: (callback: CommonWxCallback) => void,
+
+        /**
+         * 切换前后摄像头
+         * @param {wx.CommonWxCallback} callback
+         */
+        switchCamera: (callback: CommonWxCallback) => void,
+
+        /**
+         * 快照
+         * @param {wx.CommonWxCallback} callback
+         * 最底版本：1.9.90
+         */
+        snapshot: (callback: CommonWxCallback) => void,
     };
 }
