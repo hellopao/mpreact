@@ -9,24 +9,28 @@ declare namespace mp {
      */
     interface AppLifeCycle {
         /**
-         * 生命周期函数--监听小程序初始化	当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+         * 生命周期函数--监听小程序初始化    当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
          */
         onLaunch?(): void;
+
         /**
-         * 生命周期函数--监听小程序显示	当小程序启动，或从后台进入前台显示，会触发 onShow
+         * 生命周期函数--监听小程序显示    当小程序启动，或从后台进入前台显示，会触发 onShow
          */
         onShow?(): void;
+
         /**
-         * 生命周期函数--监听小程序隐藏	当小程序从前台进入后台，会触发 onHide
+         * 生命周期函数--监听小程序隐藏    当小程序从前台进入后台，会触发 onHide
          */
         onHide?(): void;
+
         /**
-         * 错误监听函数	当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
+         * 错误监听函数    当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
          */
         onError?(): void;
     }
 
-    interface WxApp extends AppLifeCycle { }
+    interface WxApp extends AppLifeCycle {
+    }
 
     class WxApp {
         mounted?(): void;
@@ -42,34 +46,42 @@ declare namespace mp {
          * 生命周期函数--监听页面加载
          */
         onLoad?(): void;
+
         /**
          * 生命周期函数--监听页面初次渲染完成
          */
         onReady?(): void;
+
         /**
-         * 生命周期函数--监听页面显示 
+         * 生命周期函数--监听页面显示
          */
         onShow?(): void;
+
         /**
          * 生命周期函数--监听页面隐藏
          */
         onHide?(): void;
+
         /**
          * 生命周期函数--监听页面卸载
          */
         onUnload?(): void;
+
         /**
          * 页面相关事件处理函数--监听用户下拉动作
          */
         onPullDownRefresh?(): void;
+
         /**
          * 页面上拉触底事件的处理函数
          */
         onReachBottom?(): void;
+
         /**
          * 用户点击右上角转发
          */
         onShareAppMessage?(): void;
+
         /**
          * 页面滚动触发事件的处理函数
          */
@@ -78,10 +90,12 @@ declare namespace mp {
 
     interface Page<S> {
         data: S;
+
         setData(data: Partial<S>, cb?: Function): void;
     }
 
-    interface WxPage<P, S> extends PageLifeCycle { }
+    interface WxPage<P, S> extends PageLifeCycle {
+    }
 
     class WxPage<P, S> {
 
@@ -108,18 +122,22 @@ declare namespace mp {
          * 组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData
          */
         created?(): void;
+
         /**
          * 组件生命周期函数，在组件实例进入页面节点树时执行
          */
         attached?(): void;
+
         /**
          * 组件生命周期函数，在组件布局完成后执行，此时可以获取节点信息（使用 SelectorQuery ）
          */
         ready?(): void;
+
         /**
          * 组件生命周期函数，在组件实例被移动到节点树另一个位置时执行
          */
         moved?(): void;
+
         /**
          * 组件生命周期函数，在组件实例被从页面节点树移除时执行
          */
@@ -149,7 +167,7 @@ declare namespace mp {
             [method: string]: Function;
         };
         /**
-         * 
+         *
          * 设置data并执行视图层渲染
          */
         setData: (data: Partial<S>, cb?: Function) => void;
@@ -158,11 +176,11 @@ declare namespace mp {
          */
         hasBehavior: (behavior: object) => boolean;
         /**
-         * 
+         *
          * 触发事件，参见 组件事件
          */
         triggerEvent: (name: string, detail: object, options: any) => void;
-        /** 
+        /**
          * 创建一个 SelectorQuery 对象，选择器选取范围为这个组件实例内
          */
         createSelectorQuery: () => any;
@@ -180,10 +198,12 @@ declare namespace mp {
         getRelationNodes: (relationKey: string) => Array<any>;
     }
 
-    interface WxComponent<P, S> extends ComponentLifeCycle { }
+    interface WxComponent<P, S> extends ComponentLifeCycle {
+    }
 
     class WxComponent<P, S> {
         constructor(component: Component<S>);
+
         /**
          * 组件属性
          */
@@ -203,8 +223,13 @@ declare namespace mp {
 
 declare global {
     namespace JSX {
-        interface ElementAttributesProperty { props: {}; }
-        interface Element { }
+        interface ElementAttributesProperty {
+            props: {};
+        }
+
+        interface Element {
+        }
+
         interface IntrinsicElements {
             template: WXML.Template;
             block: WXML.Block;
@@ -235,19 +260,25 @@ declare global {
             map: WXML.Map;
             canvas: WXML.Canvas;
             slot: WXML.Slot;
+            'live-player': WXML.LivePlayer;
+            'live-pusher': WXML.LivePusher;
         }
     }
 }
 
 export default wx;
 
-export declare class WxApp extends mp.WxApp { }
-export declare abstract class WxPage<P, S> extends mp.WxPage<P, S> { 
+export declare class WxApp extends mp.WxApp {
+}
+
+export declare abstract class WxPage<P, S> extends mp.WxPage<P, S> {
     abstract template: JSX.Element;
 }
-export declare abstract class WxComponent<P, S> extends mp.WxComponent<P, S>{
+
+export declare abstract class WxComponent<P, S> extends mp.WxComponent<P, S> {
     abstract template: JSX.Element;
 }
+
 export function AppConfig<T extends { new(...args: any[]): any }>(config: {
     /**
      * 设置页面路径
@@ -258,43 +289,43 @@ export function AppConfig<T extends { new(...args: any[]): any }>(config: {
      */
     window?: {
         /**
-         * #000000 导航栏背景颜色，如#000000	
+         * #000000 导航栏背景颜色，如#000000
          */
         navigationBarBackgroundColor?: string;
         /**
-         * white 导航栏标题颜色，仅支持 black/white	
+         * white 导航栏标题颜色，仅支持 black/white
          */
         navigationBarTextStyle?: string;
         /**
-         * 导航栏标题文字内容	
+         * 导航栏标题文字内容
          */
         navigationBarTitleText?: string;
         /**
-         * default	导航栏样式，仅支持 default/custom。custom 模式可自定义导航栏，只保留右上角胶囊状的按钮	微信版本 6.6.0
+         * default    导航栏样式，仅支持 default/custom。custom 模式可自定义导航栏，只保留右上角胶囊状的按钮    微信版本 6.6.0
          */
         navigationStyle?: string;
         /**
-         * #ffffff	窗口的背景色	
+         * #ffffff    窗口的背景色
          */
         backgroundColor?: string;
         /**
-         *	dark	下拉背景字体、loading 图的样式，仅支持 dark/light	 
+         *    dark    下拉背景字体、loading 图的样式，仅支持 dark/light
          */
         backgroundTextStyle?: string;
         /**
-         * 	#ffffff	顶部窗口的背景色，仅 iOS 支持	微信版本 6.5.16
+         *    #ffffff    顶部窗口的背景色，仅 iOS 支持    微信版本 6.5.16
          */
         backgroundColorTop?: string;
         /**
-         * #ffffff	底部窗口的背景色，仅 iOS 支持	微信版本 6.5.16
+         * #ffffff    底部窗口的背景色，仅 iOS 支持    微信版本 6.5.16
          */
         backgroundColorBottom?: string;
         /**
-         * false	是否开启下拉刷新，详见页面相关事件处理函数	
+         * false    是否开启下拉刷新，详见页面相关事件处理函数
          */
         enablePullDownRefresh?: boolean;
         /**
-         * 50	页面上拉触底事件触发时距页面底部距离，单位为px
+         * 50    页面上拉触底事件触发时距页面底部距离，单位为px
          */
         onReachBottomDistance?: number;
     };
@@ -315,7 +346,7 @@ export function AppConfig<T extends { new(...args: any[]): any }>(config: {
          */
         backgroundColor: string;
         /**
-         * black	tabbar上边框的颜色， 仅支持 black/white
+         * black    tabbar上边框的颜色， 仅支持 black/white
          */
         borderStyle?: string;
         /**
@@ -340,7 +371,7 @@ export function AppConfig<T extends { new(...args: any[]): any }>(config: {
             selectedIconPath?: string
         }>;
         /**
-         *bottom	可选值 bottom、top 
+         *bottom    可选值 bottom、top
          */
         position?: string;
     };
@@ -374,35 +405,35 @@ export function AppConfig<T extends { new(...args: any[]): any }>(config: {
 
 export function PageConfig<T extends { new(...args: any[]): any }>(config: {
     /**
-     * #000000	导航栏背景颜色，如"#000000"
+     * #000000    导航栏背景颜色，如"#000000"
      */
     navigationBarBackgroundColor?: string;
     /**
-     * 	white	导航栏标题颜色，仅支持 black/white
+     *    white    导航栏标题颜色，仅支持 black/white
      */
     navigationBarTextStyle?: string;
     /**
-     * 		导航栏标题文字内容
+     *        导航栏标题文字内容
      */
     navigationBarTitleText?: string;
     /**
-     * #ffffff	窗口的背景色
+     * #ffffff    窗口的背景色
      */
     backgroundColor?: string;
     /**
-     * dark	下拉背景字体、loading 图的样式，仅支持 dark/light
+     * dark    下拉背景字体、loading 图的样式，仅支持 dark/light
      */
     backgroundTextStyle?: string;
     /**
-     * 	false	是否开启下拉刷新，详见页面相关事件处理函数。
+     *    false    是否开启下拉刷新，详见页面相关事件处理函数。
      */
     enablePullDownRefresh?: boolean;
     /**
-     * false	设置为 true 则页面整体不能上下滚动；只在 page.json 中有效，无法在 app.json 中设置该项
+     * false    设置为 true 则页面整体不能上下滚动；只在 page.json 中有效，无法在 app.json 中设置该项
      */
     disableScroll?: boolean;
     /**
-     * 50	页面上拉触底事件触发时距页面底部距离，单位为px
+     * 50    页面上拉触底事件触发时距页面底部距离，单位为px
      */
     onReachBottomDistance?: number;
 }): (constructor: T) => any;
