@@ -66,8 +66,6 @@ export abstract class WxComponent<P, S>{
         [
             // 实例方法
             ...Object.getOwnPropertyNames(Object.getPrototypeOf(this)),
-            // 生命周期函数
-            "created", "attached", "ready", "moved", "detached"
         ].forEach(method => {
             if (typeof this[method] == "function" && ['constructor', 'mounted'].indexOf(method) === -1) {
                 component[method] = this[method].bind(this);

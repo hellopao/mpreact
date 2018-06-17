@@ -17,8 +17,6 @@ export abstract class WxPage<P, S> {
         [
             // 实例方法
             ...Object.getOwnPropertyNames(Object.getPrototypeOf(this)),
-            // 生命周期函数
-            'onShow', 'onReady', 'onHide', 'onUnload', 'onPullDownRefresh', 'onReachBottom', 'onShareAppMessage'
         ].forEach(method => {
             if (typeof this[method] == "function" && ['constructor', 'mounted'].indexOf(method) === -1) {
                 page[method] = this[method].bind(this);

@@ -41,12 +41,6 @@ export abstract class WxApp {
 
     constructor(private app: App, public options?: AppOptions) {
 
-        ["onShow", "onHide", "onError"].forEach(hook => {
-            try {
-                app[hook] = this[hook].bind(this);
-            } catch (err) {
-            }
-        });
     }
 
 }
