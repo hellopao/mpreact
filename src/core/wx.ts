@@ -22,11 +22,11 @@ function promisifyWxApi() {
 
     Object.keys(wx).forEach(api => {
         if (!isSyncApi(api)) {
-            ns[api] = function (obj: any = {}) {
+            ns[api] = function (obj: any = {}, ...args) {
                 return new Promise((resolve, reject) => {
                     obj.success = resolve;
                     obj.fail = reject;
-                    wx[api](obj);
+                    wx[api](obj, ...args);
                 });
             }
         } else {

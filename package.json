@@ -1,16 +1,15 @@
 {
   "name": "mpreact",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react like framework for mini program",
   "main": "lib/index.js",
   "files": [
     "./lib/index.js",
     "./types/**/*",
-    "./index.d.ts",
-    "./rollup.config.js"
+    "./index.d.ts"
   ],
   "scripts": {
-    "postinstall": "node node_modules/rollup/bin/rollup -c",
+    "prepublish": "node node_modules/rollup/bin/rollup -c",
     "build": "node node_modules/rollup/bin/rollup -c"
   },
   "keywords": [
@@ -21,13 +20,12 @@
   "author": "qinjia@outlook.com",
   "license": "ISC",
   "devDependencies": {
+    "fast-glob": "^2.2.2",
+    "fs-extra": "^6.0.1",
     "rollup": "^0.56.5",
     "rollup-plugin-typescript": "^0.8.1",
     "typescript": "^2.7.2"
   },
-  "dependencies": {
-    "fast-glob": "^2.2.2",
-    "fs-extra": "^6.0.1"
-  },
+  "dependencies": {},
   "types": "./index.d.ts"
 }
