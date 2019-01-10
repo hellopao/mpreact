@@ -94,6 +94,8 @@ declare namespace mp {
 
         navigateTo(page: string, query?: { [key: string]: number | string | boolean }): Promise<void>;
 
+        redirectTo(page: string, query?: { [key: string]: number | string | boolean }): Promise<void>;
+
         setTitle(title: string): Promise<void>;
 
     }

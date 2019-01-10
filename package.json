@@ -1,6 +1,6 @@
 {
   "name": "mpreact",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "react like framework for mini program",
   "main": "lib/index.js",
   "files": [
@@ -9,7 +9,6 @@
     "./index.d.ts"
   ],
   "scripts": {
-    "prepublish": "node node_modules/rollup/bin/rollup -c",
     "build": "node node_modules/rollup/bin/rollup -c"
   },
   "keywords": [

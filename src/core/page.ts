@@ -44,6 +44,11 @@ export abstract class WxPage<P, S> {
         return wx.navigateTo({ url });
     }
 
+    redirectTo(page: string, query: { [key: string]: number | string | boolean } = {}) {
+        let url = page + `?${Object.keys(query).map(key => `${key}=${query[key]}`).join('&')}`;
+        return wx.redirectTo({ url });
+    }
+
     setTitle(title: string) {
         wx.setNavigationBarTitle({ title })
     }
